@@ -1,19 +1,29 @@
-import random, math
-from metropolis import schedule
+from metropolis.visualization import plot_history
+import random
 
-def simulated_annealing(initial_state, energy_fn, neighbor_fn, schedule_fn, T0, steps):
+def simulated_annealing(initial_state, energy_fn, neighbor_fn,
+                        T0=10.0, cooling_rate=0.99, steps=1000,
+                        plot=True):
+    """
+    Algoritmo de Metropolis para Simulated Annealing.
+    """
     state = initial_state
     energy = energy_fn(state)
-    history = []
+    history = [energy]
+    T = T0
 
     for step in range(steps):
-        T = schedule_fn(T0, step)
-        new_state = neighbor_fn(state)
-        new_energy = energy_fn(new_state)
-        delta_E = new_energy - energy
+        candidate = neighbor_fn(state)
+        candidate_energy = energy_fn(candidate)
+        delta = candidate_energy - energy
 
-        if delta_E < 0 or random.random() < math.exp(-delta_E / T):
-            state, energy = new_state, new_energy
+        if delta < 0 or random.random() < min(1, pow(2.71828, -delta/T)):
+            state, energy = candidate, candidate_energy
 
-        history.append((step, T, energy))
+        history.append(energy)
+        T *= cooling_rate
+
+    if plot:
+        plot_history(history)
+
     return state, energy, history

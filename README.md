@@ -38,3 +38,8 @@ Ejecuta desde la raíz del proyecto:
 ```bash
 python -m examples.example_run
 ```
+
+## Historial
+
+V3.0
+Añadido Módulo `visualization.py` para graficar convergencia.
