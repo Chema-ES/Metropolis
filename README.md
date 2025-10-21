@@ -5,14 +5,14 @@ Implementación del **algoritmo de Metropolis** como núcleo del método de **Si
 
 ## Instalación
 
-En tu entorno de Anaconda (u otro virtual environment):
+En tu entorno de Anaconda (u otro entorno virtual):
 
 ```bash
 pip install -e .
 ```
 Esto instala el paquete localmente en modo editable.
 
-Si prefieres usar dependencias explícitas:
+Si se prefiere usar dependencias explícitas:
 
 ```bash
 pip install -r requirements.txt
@@ -20,6 +20,7 @@ pip install -r requirements.txt
 
 ## Estructura Metropolis V1.0
 
+```bash
 Metropolis/
 ├── metropolis/
 │   ├── core.py
@@ -29,6 +30,7 @@ Metropolis/
 ├── README.md
 ├── LICENSE
 └── requirements.txt
+```
 
 
 ## Ejecución
@@ -41,5 +43,15 @@ python -m examples.example_run
 
 ## Historial
 
+V1.0
+Motor Monte Carlo básico
+Ejemplo de uso
+
+V2.0
+Incorpora varios schedules  de enfriamiento
+
 V3.0
-Añadido Módulo `visualization.py` para graficar convergencia.
+- Añadido Módulo `visualization.py` para graficar convergencia.
+- Corregido bug en orden de parámetros de llamada a la función scheduling
+- Se evitan energías negativas
+- Otros cambios menores.
