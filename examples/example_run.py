@@ -1,9 +1,10 @@
-#Ejemplo de aplicación (Metropolis V3.0)
+#Ejemplo de aplicación (Metropolis V4.0)
 
-#Paisaje energético: pozo de potencial con mínimo en x=0)
+#Admite argumentos en línea de comandos
 
 from metropolis.core import simulated_annealing
 import random
+import argparse
 
 def energy_fn(x):  # Energía: cuadrado de la distancia a 0
     return x**2
@@ -12,11 +13,20 @@ def neighbor_fn(x):  # Perturbación aleatoria
     return x + random.uniform(-1, 1)
 
 if __name__ == "__main__":
-    initial_state = random.uniform(-10, 10)
+    parser = argparse.ArgumentParser(description="Ejecutar Metropolis con diferentes tipos de scheduling")
+    parser.add_argument(
+        "schedule",
+        choices=["linear", "exponential", "logarithmic"],
+        help="Tipo de scheduling a usar"
+    )
+    parser.add_argument(
+        "--plot",
+        action="store_true",
+        help="Graficado epochs"
+    )
+    args = parser.parse_args()
 
-    # Parámetros configurables
-    schedule = "exponential"   # "linear", "exponential", "logarithmic"
-    plot = True                # activa visualización
+    initial_state = random.uniform(-10, 10)
 
     final_state, final_energy, history = simulated_annealing(
         initial_state,
@@ -25,8 +35,8 @@ if __name__ == "__main__":
         T0=100.0,
         cooling_rate=0.98,
         steps=500,
-        schedule=schedule,
-        plot=plot
+        schedule=args.schedule,
+        plot=args.plot
     )
 
     print(f"Estado final: {final_state:.4f}")
