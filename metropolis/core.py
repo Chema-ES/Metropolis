@@ -1,4 +1,6 @@
-# metropolis/core.py (versión V3, corregida y robusta)
+# Módulo principal
+# metropolis/core.py (versión V4.0)
+
 import math
 import random
 from metropolis.schedule import SCHEDULES

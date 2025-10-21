@@ -1,3 +1,6 @@
+# Módulo de scheduling
+# metropolis/schedule.py V4.0
+
 import math
 
 def exponential(T0, rate, step):

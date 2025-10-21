@@ -5,24 +5,25 @@
 from metropolis.core import simulated_annealing
 import random
 import argparse
+import inspect
 
-def energy_fn(x):  # Energía: cuadrado de la distancia a 0
+def energy_fn(x):  # Energía: pozo de potencial
     return x**2
 
 def neighbor_fn(x):  # Perturbación aleatoria
     return x + random.uniform(-1, 1)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Ejecutar Metropolis con diferentes tipos de scheduling")
+    parser = argparse.ArgumentParser(description="Execute Metropolis annealing with different scheduling types")
     parser.add_argument(
         "schedule",
         choices=["linear", "exponential", "logarithmic"],
-        help="Tipo de scheduling a usar"
+        help="Type of scheduling to be used"
     )
     parser.add_argument(
         "--plot",
         action="store_true",
-        help="Graficado epochs"
+        help="plotted Metropolis epochs"
     )
     args = parser.parse_args()
 
@@ -38,6 +39,13 @@ if __name__ == "__main__":
         schedule=args.schedule,
         plot=args.plot
     )
+    print("Metropolis Algorithm v4.0")
+    print("(Simmulated Annealing, SA)")
+    print("--------------------------")
+    print("Energy Function:")
+    print(inspect.getsource(energy_fn))
+    print(f"Final State: {final_state:.4f}")
+    print(f"Final Energy: {final_energy:.6f}")
+   
 
-    print(f"Estado final: {final_state:.4f}")
-    print(f"Energía final: {final_energy:.6f}")
+    

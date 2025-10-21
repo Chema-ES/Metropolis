@@ -35,10 +35,27 @@ Metropolis/
 
 ## Ejecución
 
-Ejecuta desde la raíz del proyecto:
+```
+usage: example_run.py [-h] [--plot] {linear,exponential,logarithmic}
+
+Execute Metropolis with different types of scheduling
+
+positional arguments:
+  {linear,exponential,logarithmic}
+                        Scheduling types for annealing
+
+options:
+  -h, --help            show this help message and exit
+  --plot                epochs history
+
+```
+
+Ejemplos:
 
 ```bash
-python -m examples.example_run
+python -m examples.example_run linear --plot
+python -m examples.example_run exponential  --plot
+
 ```
 
 ## Historial
@@ -55,3 +72,7 @@ V3.0
 - Corregido bug en orden de parámetros de llamada a la función scheduling
 - Se evitan energías negativas
 - Otros cambios menores.
+
+V4.0
+- Versión final estable
+- Añadido soporte línea de comandos.

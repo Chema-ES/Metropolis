@@ -1,4 +1,5 @@
-#Módulo de visualización (Metropolis V3.0)
+#Módulo de visualización 
+#metropolis/visualization.py V4.0
 
 import matplotlib.pyplot as plt
 
