@@ -1,12 +1,13 @@
 # Módulo principal
-# metropolis/core.py (versión V4.0)
+# metropolis/core.py (versión V5.0)
 
 import math
 import random
 from metropolis.schedule import SCHEDULES
+from metropolis.energies import ENERGY
 from metropolis.visualization import plot_history
 
-def simulated_annealing(initial_state, energy_fn, neighbor_fn,
+def simulated_annealing(initial_state, energyfun, neighbor_fn,
                         T0=100.0, cooling_rate=0.99, steps=1000,
                         schedule="exponential", plot=False):
     """
@@ -18,10 +19,15 @@ def simulated_annealing(initial_state, energy_fn, neighbor_fn,
     """
     schedule_fn = SCHEDULES.get(schedule)
     if schedule_fn is None:
-        raise ValueError(f"Schedule desconocido: {schedule}")
+        raise ValueError(f"Schedule not supported: {schedule}")
 
+    energy_fn = ENERGY.get(energyfun)
+    if energy_fn is None:
+        raise ValueError(f"Energy not supported: {energyfun}")
+
+    # Estado y energía inicial
     state = initial_state
-    energy = energy_fn(state)
+    energy= energy_fn(state)
     history = [energy]
 
     for step in range(1, steps + 1):
@@ -50,4 +56,4 @@ def simulated_annealing(initial_state, energy_fn, neighbor_fn,
     if plot:
         plot_history(history)
 
-    return state, energy, history
+    return energy_fn,state, energy, history

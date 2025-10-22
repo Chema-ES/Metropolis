@@ -18,44 +18,49 @@ Si se prefiere usar dependencias explícitas:
 pip install -r requirements.txt
 ```
 
-## Estructura Metropolis V1.0
+## Estructura Metropolis V5.0
 
-```bash
+```text
 Metropolis/
-├── metropolis/
-│   ├── core.py
-│ 
-├── examples/
-│   └── example_run.py
 ├── README.md
 ├── LICENSE
-└── requirements.txt
-```
-
+├── requirements.txt
+├── metropolis/
+│   ├── __init__.py      # inicialización paquete
+│   ├── core.py          # núcleo del algoritmo
+│   ├── schedule.py      # funciones de temperatura (v2+)
+│   ├── energies.py      # funciones de temperatura (v5+)
+│   └── visualization.py # para plots de convergencia (v3+)
+├── run/
+│   └── anneal.py
+└── tests/
+``` 
 
 ## Ejecución
 
 ```
-usage: example_run.py [-h] [--plot] {linear,exponential,logarithmic}
+usage: anneal.py [-h] [--schedule {linear,exponential,logarithmic}] [--plot] {square,abs,cube,bimodal}
 
-Execute Metropolis with different types of scheduling
+Execute Metropolis annealing with different energy landscapes and scheduling types
 
 positional arguments:
-  {linear,exponential,logarithmic}
-                        Scheduling types for annealing
+  {square,abs,cube,bimodal}
+                        Energy landscape
 
 options:
   -h, --help            show this help message and exit
-  --plot                epochs history
+  --schedule {linear,exponential,logarithmic}
+                        Type of scheduling to be used (default: exponential)
+  --plot                Plotted Metropolis epochs
 
 ```
 
 Ejemplos:
 
 ```bash
-python -m examples.example_run linear --plot
-python -m examples.example_run exponential  --plot
-
+python -m run.anneal square --plot
+python -m run.anneal bimodal --schedule exponential --plot
+python -m run.anneal bimodal --schedule linear
 ```
 
 ## Historial
@@ -74,5 +79,10 @@ V3.0
 - Otros cambios menores.
 
 V4.0
-- Versión final estable
 - Añadido soporte línea de comandos.
+
+V5.0
+- Versión final estable
+- Posibilidad de indicar función paisaje-energético
+- Cambiado 
+- Salida en inglés

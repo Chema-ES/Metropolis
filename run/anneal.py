@@ -7,39 +7,47 @@ import random
 import argparse
 import inspect
 
-def energy_fn(x):  # Energía: pozo de potencial
-    return x**2
-
 def neighbor_fn(x):  # Perturbación aleatoria
     return x + random.uniform(-1, 1)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Execute Metropolis annealing with different scheduling types")
+    parser = argparse.ArgumentParser(description="Execute Metropolis annealing with different energy landscapes and scheduling types")
+    
     parser.add_argument(
-        "schedule",
-        choices=["linear", "exponential", "logarithmic"],
-        help="Type of scheduling to be used"
+        "energy",
+        choices=["square", "abs", "cube","bimodal"],
+        help="Energy landscape"
     )
+    
+    
+    parser.add_argument(
+        "--schedule",
+        choices=["linear", "exponential", "logarithmic"],
+        default="exponential",
+        help="Type of scheduling to be used (default: exponential)"
+    )
+
+    
     parser.add_argument(
         "--plot",
         action="store_true",
-        help="plotted Metropolis epochs"
+        help="Plotted Metropolis epochs"
     )
     args = parser.parse_args()
 
     initial_state = random.uniform(-10, 10)
 
-    final_state, final_energy, history = simulated_annealing(
+    energy_fn,final_state, final_energy, history = simulated_annealing(
         initial_state,
-        energy_fn,
-        neighbor_fn,
+        energyfun=args.energy,
+        neighbor_fn=neighbor_fn,
         T0=100.0,
         cooling_rate=0.98,
         steps=500,
         schedule=args.schedule,
         plot=args.plot
-    )
-    print("Metropolis Algorithm v4.0")
+        )
+    print("Metropolis Algorithm v5.0")
     print("(Simmulated Annealing, SA)")
     print("--------------------------")
     print("Energy Function:")
