@@ -1,4 +1,4 @@
-#Ejemplo de aplicación (Metropolis V4.0)
+# Main (Metropolis V5.0)
 
 #Admite argumentos en línea de comandos
 
@@ -10,7 +10,8 @@ import inspect
 def neighbor_fn(x):  # Perturbación aleatoria
     return x + random.uniform(-1, 1)
 
-if __name__ == "__main__":
+def main():
+
     parser = argparse.ArgumentParser(description="Execute Metropolis annealing with different energy landscapes and scheduling types")
     
     parser.add_argument(
@@ -54,6 +55,10 @@ if __name__ == "__main__":
     print(inspect.getsource(energy_fn))
     print(f"Final State: {final_state:.4f}")
     print(f"Final Energy: {final_energy:.6f}")
+
+if __name__ == "__main__":
+    main()
+
    
 
     

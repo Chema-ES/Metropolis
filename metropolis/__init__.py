@@ -2,5 +2,7 @@
 
 print("Initializing Metropolis packet..")
 
-VERSION = "V5.0"
+__version__ = "5.0.0"
+__author__ = "Jose M. Lopez"
+__email__="chema.electronica@gmail.com"
 
