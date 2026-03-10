@@ -35,10 +35,10 @@ pip install -r requirements.txt
 3. Como paquete PIP
 
 ```bash
-pip install metropolis-SA==5.0.0
+pip install metropolis-SA==5.0.1
 ```
 
-## Estructura Metropolis V5.0
+## Estructura Metropolis V5.0.0
 
 ```text
 Metropolis-SA/
@@ -55,6 +55,26 @@ Metropolis-SA/
 ├── test/
 │   └── anneal.py
 └── tests/
+``` 
+
+## Estructura Metropolis V5.0.1
+
+```text
+Metropolis-SA/
+├── README.md
+├── LICENSE
+├── requirements.txt
+├── src/
+    ├── main.py             # main metropolis
+    ├──metropolis_sa 
+        ├── __init__.py      # inicialización paquete
+        ├── core.py          # núcleo del algoritmo
+        ├── schedule.py      # funciones de temperatura (v2+)
+│       ├── energies.py      # funciones de temperatura (v5+)
+│       └── visualization.py # para plots de convergencia (v3+)
+├── test/
+│   └── anneal.py
+└── doc/
 ``` 
 
 ## Ejecución
@@ -87,44 +107,58 @@ python -m metropolis.main bimodal --schedule exponential --plot
 python -m metropolis.main bimodal --schedule linear
 ```
 
+### Versión >=5.0.1
+
+Desde raiz del paquete usar /src/main
+
+```bash
+python -m main square --plot
+python -m main bimodal --schedule exponential --plot
+python -m main bimodal --schedule linear
+```
+
 2. **Instalándolo como paquete PIP**
 
 Instalando el paquete desde PyPI, se habilita el comando de consola con entry point **metropolis-run**.
 
 ```bash
-pip install metropolis-SA==5.0.0
-metropolis-run 
+pip install metropolis-SA==5.0.1
+metropolis-SA 
 ```
    
 Ejemplos:
 
 ```bash
-metropolis-run -h 
-metropolis-run  bimodal --schedule exponential --plot
-metropolis-run quare --schedule linear --plot
+metropolis-SA -h 
+metropolis-SA  bimodal --schedule exponential --plot
+metropolis-SA quare --schedule linear --plot
 ```
 
 ## Historial
 
-V1.0
+V1.0.0
 Motor Monte Carlo básico
 Ejemplo de uso
 
-V2.0
+V2.0.0
 Incorpora varios schedules  de enfriamiento
 
-V3.0
+V3.0.0
 - Añadido Módulo `visualization.py` para graficar convergencia.
 - Corregido bug en orden de parámetros de llamada a la función scheduling
 - Se evitan energías negativas
 - Otros cambios menores.
 
-V4.0
+V4.0.0
 - Añadido soporte línea de comandos.
 
-V5.0
+V5.0.0
 - Versión final estable
 - Posibilidad de indicar función paisaje-energético
 - Integrado un main al paquete
 - Añadido como paquete PIP 
 - Salida en inglés
+
+V5.0.1
+- Reorganización de módulos
+- cambios menores
