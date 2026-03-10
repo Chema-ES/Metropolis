@@ -1,5 +1,5 @@
 # Módulo de scheduling
-# metropolis/schedule.py V4.0
+# metropolis_sa/schedule.py V4.0
 
 import math
 

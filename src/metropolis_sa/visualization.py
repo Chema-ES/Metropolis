@@ -1,5 +1,5 @@
 #Módulo de visualización 
-#metropolis/visualization.py V5.0
+#metropolis_sa/visualization.py V5.0
 
 import matplotlib.pyplot as plt
 

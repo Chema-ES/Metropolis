@@ -1,5 +1,5 @@
 # Funciones de energía disponibles
-# metropolis/energies.py (V5.0)
+# metropolis_sa/energies.py (V5.0)
 
 def energy_square(x):
     return x**2

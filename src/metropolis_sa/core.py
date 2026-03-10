@@ -3,9 +3,9 @@
 
 import math
 import random
-from metropolis.schedule import SCHEDULES
-from metropolis.energies import ENERGY
-from metropolis.visualization import plot_history
+from  metropolis_sa import SCHEDULES
+from  metropolis_sa import ENERGY
+from  metropolis_sa import plot_history
 
 def simulated_annealing(initial_state, energyfun, neighbor_fn,
                         T0=100.0, cooling_rate=0.99, steps=1000,
