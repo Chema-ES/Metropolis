@@ -162,3 +162,14 @@ V5.0.0
 V5.0.1
 - Reorganización de módulos
 - cambios menores
+
+## Creación de releases
+### Flujo recomendado
+git add .
+git commit -m "Prepare release vx.x.x"
+git push
+
+git tag -a v1x.x.x -m "Release vx.x.x"
+git push origin vx.x.x
+
+gh release create vx.x
