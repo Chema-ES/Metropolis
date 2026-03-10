@@ -20,9 +20,9 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/chema-e/metropolis"
-Repository = "https://github.com/chema-e/metropolis"
-Issues = "https://github.com/chema-e/metropolis/issues"
+Homepage = "https://github.com/chema-es/metropolis"
+Repository = "https://github.com/chema-es/metropolis"
+Issues = "https://github.com/chema-es/metropolis/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
