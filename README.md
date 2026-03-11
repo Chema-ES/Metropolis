@@ -65,9 +65,9 @@ Metropolis-SA/
 ├── LICENSE
 ├── requirements.txt
 ├── src/
-    ├── main.py             # main metropolis
     ├──metropolis_sa 
         ├── __init__.py      # inicialización paquete
+        ├── main.py 
         ├── core.py          # núcleo del algoritmo
         ├── schedule.py      # funciones de temperatura (v2+)
 │       ├── energies.py      # funciones de temperatura (v5+)
@@ -109,17 +109,17 @@ python -m metropolis.main bimodal --schedule linear
 
 ### Versión >=5.0.1
 
-Desde raiz del paquete usar /src/main
+Desde raiz del paquete /src
 
 ```bash
-python -m main square --plot
-python -m main bimodal --schedule exponential --plot
-python -m main bimodal --schedule linear
+python -m metropolis_sa.main square --plot
+python -m metropolis_sa.main bimodal --schedule exponential --plot
+python -m metropolis_sa.main bimodal --schedule linear
 ```
 
 2. **Instalándolo como paquete PIP**
 
-Instalando el paquete desde PyPI, se habilita el comando de consola con entry point **metropolis-run**.
+Instalando el paquete desde PyPI, se habilita el comando de consola con entry point **metropolis-SA**.
 
 ```bash
 pip install metropolis-SA==5.0.1
@@ -161,7 +161,7 @@ V5.0.0
 
 V5.0.1
 - Reorganización de módulos
-- cambios menores
+- Correcciones menores
 
 ## Creación de releases
 ### Flujo recomendado
