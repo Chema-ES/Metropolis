@@ -2,7 +2,8 @@
 
 #Admite argumentos en línea de comandos
 
-from metropolis_sa.core import simulated_annealing
+from metropolis_sa import simulated_annealing
+
 import random
 import argparse
 import inspect

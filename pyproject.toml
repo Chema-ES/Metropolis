@@ -30,5 +30,5 @@ where = ["src"]
 
 # Script de entrada: crea un comando CLI "metropolis-SA"
 [project.scripts]
-# directorio start where = ["src"]
-metropolis-SA = "main:main"
+# directorio start: where = ["src"]
+metropolis-SA = "metropolis_sa.main:main"
